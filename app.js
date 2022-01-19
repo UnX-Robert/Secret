@@ -25,8 +25,7 @@ app.use(session({
 // Initialize passport to deal with the sessions
 app.use(passport.initialize());
 app.use(passport.session());
-
-mongoose.connect('"mongodb+srv://' + process.env.USERNAME + ':' + process.env.PASSWORD + '@cluster0.ixg4u.mongodb.net/userDB?retryWrites=true&w=majority');
+mongoose.connect('mongodb+srv://'+process.env.USERNAME_DB+':'+process.env.PASSWORD+'@cluster0.ixg4u.mongodb.net/userDB?retryWrites=true&w=majority');
 
 const userSchema = new mongoose.Schema({
   email: String,
@@ -182,5 +181,5 @@ app.route('/submit')
 );
 
 app.listen(process.env.PORT, () => {
-  console.log('Server started on port 3000');
+  console.log('Server started on port ' + process.env.PORT);
 });
